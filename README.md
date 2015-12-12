@@ -1,2 +1,1 @@
-# alan1001110.github.io
-This is just my page for playing around with at the moment
+#[alan1001110.github.io](http://alan1001110.github.io/)
