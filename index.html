@@ -16,7 +16,30 @@
 </head>
 
 <body>
-    <div style="margin: 5%;">
+    <div class="main-content">
+
+        <div class="blog-post">
+
+            <h1>Array.map()</h1>
+
+            <p>While I had read the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">documentation</a> on <code>Array.map()</code> before, I'd never put it into practice. Nor did I understand how using it would be beneficial. Nevermind that I couldn't remember the difference between <code>Array.map()</code> and <code>Array.reduce()</code>.</p>
+
+            <p>To get myself up to speed, first I reviewed the syntax. Following is an example of an <code>Array.map()</code> function that multiplies the each value in an array by the index number.</p>
+
+            <pre><code>var Arr = [10, 3, 7, 3, 0, -1, 16];
+
+var newArr = Arr.map(function(currentValue, index, array) {
+  return currentValue * index
+});
+
+// [0, 3, 14, 9, 0, -5, 96]
+            </code></pre>
+
+            <p>Of course, we still need to answer why it might be useful.</p>
+
+            <br>
+
+        </div>
 
         <div class="blog-post">
             <h1>JavaScript that I know I Don't Know</h1>
