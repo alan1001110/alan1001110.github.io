@@ -13,37 +13,35 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
+<!--    <script src="alan1001110.js"></script>-->
 </head>
 
 <body>
     <div class="main-content">
 
         <div class="blog-post">
-
             <h1>Array.map()</h1>
-
             <p>While I had read the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">documentation</a> on <code>Array.map()</code> before, I'd never put it into practice. Nor did I understand how using it would be beneficial. Nevermind that I couldn't remember the difference between <code>Array.map()</code> and <code>Array.reduce()</code>.</p>
-
-            <p>To get myself up to speed, first I reviewed the syntax. Following is an example of an <code>Array.map()</code> method that multiplies each value in an array by the index number.</p>
-
-            <pre><code>var Arr = [10, 3, 7, 3, 0, -1, 16];
-
-var newArr = Arr.map(function(currentValue, index, array) {
-  return currentValue * index
+            <p>To get myself up to speed, first I reviewed the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">syntax</a>. Well, that's not so bad. I understand what's going on. I'm not going to repeat the documentation, so have a look if you need.  But why is it useful? You can do the exact same thing with a <code>for</code> loop. If I understand correctly, it's slightly easier to read. Let's take a look at an example. First is an <code>Array.map()</code> method that multiplies each value in an array by the index number.</p>
+            <pre><code>var arr = [10, 3, 7, 3, 0, -1, 16];
+var newArr = arr.map(function(currentValue, index) {
+  return currentValue * index;
 });
 
 // [0, 3, 14, 9, 0, -5, 96]
             </code></pre>
+            <p>Now let's take a look at a <code>for</code> loop for comparison...</p>
+            <pre><code>var arr2 = [10, 3, 7, 3, 0, -1, 16];
+var newArr2 = [];
+for (var i = 0; i &lt arr2.length; i++) {
+    newArr2.push(i * arr2[i]);
+}
 
-            <p>Well, that's not so bad. I understand what's going on. But why is it useful? You can do the exact same thing with a <code>for</code> loop. Apparently programmers like it mostly because it's slightly easier to read. Let's take a look at a <code>for</code> loop for comparison...</p>
-
-            <pre><code>
+// [0, 3, 14, 9, 0, -5, 96]
             </code></pre>
-
-            <p>Okay, so Array.map() was a lot simpler. But is this just a fabricated exercise or could clean up some of my code right away? Hmm, why don't I take a look through code I've written for projects and see if there's anywhere I could use Array.map() to clean up my code...</p>
-
+            <p>The Array.map() version is one line shorter. In a four line program, that's 25% less reading &AMP writing, so it's probably worth adopting. But is this just a fabricated exercise or could I clean up some of my code right away? Hmm, why don't I take a look through code I've written for projects and see if there's anywhere I could use Array.map() to clean up my code? Read the next post to find out whether or not I was able to put this into practical use.</p>
+            <p style="font-size: 70%;">Posted by <a href="https://github.com/alan1001110">alan1001110</a> on Dec 15, 2015.</p>
             <br>
-
         </div>
 
         <div class="blog-post">
