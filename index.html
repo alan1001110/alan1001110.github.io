@@ -13,11 +13,33 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
-<!--    <script src="alan1001110.js"></script>-->
+    <script src="alan1001110.js"></script>
 </head>
 
 <body>
     <div class="main-content">
+
+        <div class="blog-post">
+            <h1>Array.reduce(), Array.filter(), &AMP Array.sort()</h1>
+            <p>Array.reduce() is used to primarily to reduce an Array to a single value. Its syntax is <code>Array.reduce(callback[, initial value])</code> and the callback function takes four arguments: <code>previousValue, currentValue, currentIndex, array</code>. The first time I read through the documentaion, it was a little confusing, but on the second read-through, it seemed simple.</p>
+            <p>I'm not going to explain it now here now or give an example because I don't think I'd do better than the MDN, and I don't think I'd get much out of the exercise. Array.sort() and Array.filter() are a couple other Array methods that I've just reviewed. I haven't been using them in my own code, but they could clean up code by getting rid of for loops and if statements.</p>
+            <p>Here are some examples that make use of the arrow function, which I'll be looking at next. I've taken some of them from the MDN.</p>
+            <pre><code>var flatArr = [[1, 2], [3, 4], [5, 6]].reduce( (prev, curr) =&GT prev.concat(curr) );
+//flatArr is 1, 2, 3, 4, 5, 6
+
+var summedArr = [4, 5, 6, 7, 8, 9, 10].reduce( (prev, current) =&GT prev + current );
+// summedArr is 49
+
+var noRepeats = [8, 5, 5, 6, 1, 8, 3, 4, 5].filter( (value, index, arr) =&GT arr.slice(0, index).indexOf(value) === -1);
+// noRepeats is 8, 5, 6, 1, 3, 4
+
+var sortedArr = [8, 40, 6, 23, 7, 80, 8, 2, 3, 0].sort( (a, b) =&GT a - b );
+// sortedArr is 0, 2, 3, 6, 7, 8, 8, 23, 40, 80</code></pre>
+            <p>Moving on...</p>
+            <p style="font-size: 70%;">Posted by <a href="https://github.com/alan1001110">alan1001110</a> on Dec 18, 2015.</p>
+            <br>
+
+        </div>
 
         <div class="blog-post">
             <h1>Array.map()</h1>
@@ -50,12 +72,12 @@ for (var i = 0; i &LT arr2.length; i++) {
             <ul>
                 <li>Array.map()</li>
                 <li>Array.filter()</li>
-                <li>Constructor and Factory Functions</li>
+                <li>Arrow functions</li>
                 <li>Callback Functions</li>
+                <li>Constructor and Factory Functions</li>
                 <li>Closures</li>
                 <li>Errors and Exceptions</li>
                 <li>Object Oriented Programming</li>
-                <li>Fat Arrow Functions</li>
             </ul>
             <p>Coming up, I intend to figure it all out and write a post on each that outlines what I've been confused about, share how I manage to grok it, and then explain the concepts in my own words.</p>
             <p style="font-size: 70%;">Posted by <a href="https://github.com/alan1001110">alan1001110</a> on Dec 14, 2015.</p>
