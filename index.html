@@ -20,10 +20,42 @@
     <div class="main-content">
 
         <div class="blog-post">
+            <h1>Arrow functions</h1>
+            <p>Arrow functions in JavaScript are fairly new, and I haven't been exposed to them much yet. The MDN documentation says that there were two reasons for bringing arrow functions into the language. These are shorter functions, and lexically bound <code>this</code>.</p>
+            <p>Shorter functions:</p>
+            <pre><code>Array.map(function(a) {return a * 2});
+Array.map(a =&GT a * 2);</code></pre>
+            <p>Lexically bound <code>this</code> (if I understand correctly) means that <code>this</code> refers to the object in which the function is found, rather than the object the function call is made from. See the following example:</p>
+            <pre><code>window.x = 3;
+
+function Multiplier() {
+    this.x = 2;
+    this.doubler = function (arr) {
+        return arr.map(num =&GT num * this.x); //
+    };
+
+    this.tripler = function (arr) {
+        return arr.map (function(num) {
+            return num * this.x;
+        });
+    };
+}
+
+var myMult = new Multiplier;
+
+console.log(myMult.doubler([1, 2, 3])); // 2, 4, 6
+console.log(myMult.tripler([1, 2, 3])); // 3, 6, 9</code></pre>
+            <p>In the example above, the doubler uses an arrow function and therefore. Therefore, <code>this</code> refers to the object the function is found in (<code>myMult</code> in this case). On the other hand, the tripler uses a standard function expression, and therefore, since the function was not called from within any object other than the window object, <code>this</code> refers to the window object. (If I understand correctly.)</p>
+            <p>One thing to note is that if you use the <code>arguments</code> keyword in an arrow function, it will not refer to parameters passed to the arrow function, but rather parameters passed to the function that the arrow function is contained in, aka the enclosing scope. (IIUC)</p>
+            <p style="font-size: 70%;">Posted by <a href="https://github.com/alan1001110">alan1001110</a> on Dec 21, 2015.</p>
+            <br>
+        </div>
+
+        <div class="blog-post">
             <h1>Array.reduce(), Array.filter(), &AMP Array.sort()</h1>
             <p>Array.reduce() is used to primarily to reduce an Array to a single value. Its syntax is <code>Array.reduce(callback[, initial value])</code> and the callback function takes four arguments: <code>previousValue, currentValue, currentIndex, array</code>. The first time I read through the documentaion, it was a little confusing, but on the second read-through, it seemed simple.</p>
             <p>I'm not going to explain it now here now or give an example because I don't think I'd do better than the MDN, and I don't think I'd get much out of the exercise. Array.sort() and Array.filter() are a couple other Array methods that I've just reviewed. I haven't been using them in my own code, but they could clean up code by getting rid of for loops and if statements.</p>
-            <p>Here are some examples that make use of the arrow function, which I'll be looking at next. I've taken some of them from the MDN.</p>
+            <p>Here are some examples that make use of the arrow function, which I'll be looking at in the next post. I've taken some of them from the MDN.</p>
             <pre><code>var flatArr = [[1, 2], [3, 4], [5, 6]].reduce( (prev, curr) =&GT prev.concat(curr) );
 //flatArr is 1, 2, 3, 4, 5, 6
 
