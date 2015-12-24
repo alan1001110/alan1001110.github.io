@@ -20,6 +20,90 @@
     <div class="main-content">
 
         <div class="blog-post">
+
+            <h1>Callback Functions</h1>
+
+            <p>Before looked more into callback functions in JavaScript, I wasn't really sure what I didn't know. After all, I seem to have been using them in my example functions. But I was pretty sure I didn't have a good handle on callback functions yet.</p>
+
+            <p>Basically, a callback function is a function passed to another function as an argument.</p>
+
+            <p>So how would it work to pass a function as an argument to another function? Does it always just execute automatically when the first function is completed? How do you pass it arguments? Or do you have to describe how to handle it?</p>
+
+            <p>Let's just try making our own and see what happens...</p>
+
+            <pre><code>function doSomething(x, y, z) {
+    console.log(x, z);
+}
+
+function mainFunction(a, b, callback) {
+    var str = "Dude";
+    callback(a, b, str);
+}
+
+mainFunction("Hello", "Goodbye", doSomething);
+
+// Hello Dude
+</code></pre>
+
+            <p>That's basically all there is to it. I'll ignore setting <code>this</code> with <code>call</code> or <code>apply</code>for now, since I'll be getting into object oriented programming in a later post. What useful thing could we do with callbacks that we couldn't do as easily with an <code>if</code> statement?</p>
+
+            <p>Let's say you have an app where when you want user input for one thing or another, you want to pop up a dialogue box to get user input, and then do something with that input data. But maybe down the road, you'll change things. You could do something like this:</p>
+
+            <pre><code>&LTscript&GT
+  function getInput(message, callback) {
+    callback(window.prompt(message));
+  }
+
+  function notifyLength(str) {
+    window.alert("Your string is " + str.length + " characters.");
+  }
+
+  function sayHelloTo(str) {
+    window.alert("Hello " + str +"!");
+  }
+&LT/script&GT
+
+&LTbutton onclick="getInput('Type something and check how many characters.', notifyLength)"&GTCount characters&LT/button&GT
+&LTbutton onclick="getInput('Who do you want to say hello to?', sayHelloTo)"&GTSay Hello to Someone&LT/button&GT</code></pre>
+
+            <script>
+                function getInput(message, callback) {
+                    callback(window.prompt(message));
+                }
+
+                function notifyLength(str) {
+                    window.alert("Your string is " + str.length + " characters.");
+                }
+
+                function sayHelloTo(str) {
+                    window.alert("Hello " + str +"!");
+                }
+
+            </script>
+
+            <button onclick="getInput('Type something and check how many characters.', notifyLength)">Count characters</button>
+            <button onclick="getInput('Who do you want to say hello to?', sayHelloTo)">Say Hello to Someone</button>
+
+            <p>Is a callback useful in this case? What if our <code>getInput</code> function looked like this:</p>
+
+            <pre><code>function getInput(message) {
+   return window.prompt(message);
+}</code></pre>
+
+            <p>For your onclick event, you could call:</p>
+
+            <pre><code>notifyLength(getInput("Type something and check how many characters."));</code></pre>
+
+            <p>In this case, using a callback doesn't seem at all useful. It could be useful if you want to execute a callback in the middle of the other function.  Or if you need to wait for a server response, a callback could execute once it's ready, if tied to an event listener (?), without holding up the flow of the program. I'm not going to get into that right now.</p>
+
+            <p>Other things that might be good to do are make callbacks optional and check if the callback argument is a function like so:</p>
+            <pre><code>if (callback && typeof(callback) === "function") {
+  callback();
+}</code></pre>
+
+        </div>
+
+        <div class="blog-post">
             <h1>Arrow functions</h1>
             <p>Arrow functions in JavaScript are fairly new, and I haven't been exposed to them much yet. The MDN documentation says that there were two reasons for bringing arrow functions into the language. These are shorter functions, and lexically bound <code>this</code>.</p>
             <p>Shorter functions:</p>
