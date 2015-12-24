@@ -80,7 +80,7 @@ mainFunction("Hello", "Goodbye", doSomething);
             <pre><code>notifyLength(getInput("Type something and check how many characters."));</code></pre>
             <p>In this case, using a callback doesn't seem at all useful. It could be useful if you want to execute a callback in the middle of the other function.  Or if you need to wait for a server response, a callback could execute once it's ready, if tied to an event listener (?), without holding up the flow of the program. I'm not going to get into that right now.</p>
             <p>Other things that might be good to do are make callbacks optional and check if the callback argument is a function like so:</p>
-            <pre><code>if (callback && typeof(callback) === "function") {
+            <pre><code>if (callback && typeof callback === "function") {
   callback();
 }</code></pre>
             <p style="font-size: 70%;">Posted by <a href="https://github.com/alan1001110">alan1001110</a> on Dec 24, 2015.</p>
