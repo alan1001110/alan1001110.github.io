@@ -20,6 +20,45 @@
     <div class="main-content">
 
         <div class="blog-post">
+            <h1>Constructors and Factory Functions</h1>
+            <p>Constructors and Factory Functions are both methods of creating objects.</p>
+            <p>Here's an example of a Constructor:</p>
+            <pre><code>function Table(legs, shape) {
+    this.legs = legs || 4;
+    this.shape = shape || "rectangle";
+}
+
+Table.prototype.components = function () {
+    return this.legs + " legs and a " + this.shape + "-shaped top";
+};
+
+var dinnerTable = new Table();
+var stool = new Table(3, "round");
+
+console.log(dinnerTable.components());  // 4 legs and a rectangle-shaped top
+console.log(stool.components());  // 3 legs and a round-shaped top</code></pre>
+            <p>And here's a similar factory function:</p>
+            <pre><code>function table(legs, shape) {
+    return {
+        legs: legs || 4,
+        shape: shape || "rectangle",
+        components: function () {
+            return this.legs + " legs and a " + this.shape + "-shaped top";
+        }
+    };
+}
+
+var dinnerTable = table();
+var stool = table(3, "round");
+
+console.log(dinnerTable.components());  // 4 legs and a rectangle-shaped top
+console.log(stool.components());  // 3 legs and a round-shaped top</code></pre>
+            <p>What are the differences between them? Why use one or the other (or either for that matter)? Check out the coming posts <i>Closures</i> and <i>Object Orientiented Programming</i> for more info.</p>
+            <p style="font-size: 70%;">Posted by <a href="https://github.com/alan1001110">alan1001110</a> on Dec 27, 2015.</p>
+            <br>
+        </div>
+
+        <div class="blog-post">
             <h1>Callback Functions</h1>
             <p>Before I looked more into callback functions in JavaScript, I wasn't really sure what I didn't know. After all, I seem to have been using them in my example functions. But I was pretty sure I didn't have a good handle on callback functions yet.</p>
             <p>Basically, a callback function is a function passed to another function as an argument.</p>
